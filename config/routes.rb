@@ -2,19 +2,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'price/index'
-      get 'price/create'
-      get 'price/show'
-      get 'price/destroy'
-    end
-  end
-  namespace :api do
-    namespace :v1 do
-      get 'recipes/index'
-      get 'recipes/create'
-      get 'recipes/show'
-      get 'recipes/destroy'
+      post 'price/create'
+      get '/show/:id', to: 'prices#show'
+      delete '/destroy/:id', to: 'prices#show'
     end
   end
   root 'homepage#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/*path' => 'homepage#index'
 end
