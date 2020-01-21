@@ -6,7 +6,9 @@ import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import App from "../components/App";
 
-render(
-    <App />,
-    document.body.appendChild(document.createElement("div"))
- );
+document.addEventListener("DOMContentLoaded", () => {
+    render(
+        <App />,
+        document.body.appendChild(document.createElement("div"))
+    );
+});
