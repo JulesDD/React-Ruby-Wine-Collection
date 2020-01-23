@@ -24,7 +24,7 @@ export default class Collection extends React.Component {
 
   render() {
     const { collection }=this.state;
-    const allCollection = collection.map((prices, index ) => (
+    const allCollection = collection.map((collection, index ) => (
       <div key={index} className="col-md-6 col-lg-4">
         <div className="card mb-4">
           <img
@@ -54,16 +54,14 @@ export default class Collection extends React.Component {
           <div className="container py-5">
             <h1 className="display-4">Wine for every occasion</h1>
             <p className="lead text-muted">
-              We’ve pulled together our most popular wines around the world, our latest
-              additions, and our editor’s picks, so there’s sure to be something
-              tempting for you to try.
+              We’ve pulled together our most popular wines around the world, including the prices. If you cannot find the wine you wish. Add it in our database.
             </p>
           </div>
         </section>
         <div className="py-5">
           <main className="container">
             <div className="text-right mb-3">
-              <Link to="/recipe" className="btn custom-button">
+              <Link to="/collection" className="btn custom-button">
                 Add new Wine to collection.
               </Link>
             </div>

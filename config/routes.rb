@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      get 'price/index'
-      post 'price/create'
-      get '/show/:id', to: 'prices#show'
-      delete '/destroy/:id', to: 'prices#show'
+      get 'collection/index'
+      post 'collection/create'
+      get '/show/:id', to: 'collection#show'
+      delete '/destroy/:id', to: 'collection#destroy'
     end
   end
   root 'homepage#index'

@@ -1,3 +1,3 @@
 class Collection < ApplicationRecord
-  validates :name, :price, :image, presence: true
+  validates :name, :price, :image, :description, presence: true
 end
