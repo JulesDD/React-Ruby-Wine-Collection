@@ -5,7 +5,7 @@ export default class Collection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      prices: []
+      collection: []
     };
   }
 

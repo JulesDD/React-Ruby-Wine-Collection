@@ -8,6 +8,7 @@ export default (
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/collection" exact component={Collection} />
+      <Route path="/collection/:id" exact component={Collection} />
     </Switch>
   </Router>
 );
