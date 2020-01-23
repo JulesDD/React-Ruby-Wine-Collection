@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 export default class Prices extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: {price: ""}};
+    this.state = {collection: {price: ""}};
 
     // You also bound an addHtmlEntities method to this so it can be accessible within the component.
     // The addHtmlEntities method will be used to replace character entities with HTML entities in the component.
     this.addHtmlEntities = this.addHtmlEntities.bind(this);
+    this.deleteCollection = this.deleteCollection.bind(this);
   }
 
   // In order to find a particular recipe, your application needs the id of the recipe.
@@ -32,6 +33,28 @@ export default class Prices extends React.Component {
   return String(str)
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">");
+  }
+
+  deleteCollection() {
+    const { match: {params: { id }}} = this.props
+    const url = `/api/v1/destroy/${id}`;
+    const token = document.querySelector('meta[name="csrf-tokent]').content;
+
+    fetch (url, {
+      method: "DELETE",
+      headers: {
+        "X-CSRF-Tokenn": token,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then(() => this.props.history.push("/recipes"))
+      .catch(error => console.log(error.message));
   }
 
   render() {
@@ -79,7 +102,7 @@ export default class Prices extends React.Component {
               />
             </div>
             <div className="col-sm-12 col-lg-2">
-              <button type="button" className="btn btn-danger">
+              <button type="button" className="btn btn-danger" onClick={this.deleteCollection}>
                 Delete Prices
               </button>
             </div>
