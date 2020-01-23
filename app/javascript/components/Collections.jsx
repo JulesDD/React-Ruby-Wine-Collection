@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default class Prices extends React.Component {
+export default class Collections extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {collection: {price: ""}};
+    this.state = { collection: {price: ""}};
 
     // You also bound an addHtmlEntities method to this so it can be accessible within the component.
     // The addHtmlEntities method will be used to replace character entities with HTML entities in the component.
@@ -16,7 +16,12 @@ export default class Prices extends React.Component {
   // This means your Recipe component expects an id param.
   //  You can access this via the props passed into the component.
   componentDidMount() {
-    const { match:{params:{id}}} = this.props;
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+    
     const url = '/api/v1/show/${id}';
     fetch(url)
       .then(response => {
